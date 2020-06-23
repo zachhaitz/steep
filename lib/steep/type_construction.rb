@@ -37,7 +37,6 @@ module Steep
     attr_reader :source
     attr_reader :annotations
     attr_reader :typing
-    attr_reader :type_env
 
     attr_reader :context
 
@@ -277,10 +276,7 @@ module Steep
           types: [
             AST::Types::Name::Instance.new(name: module_name, args: module_args),
             AST::Builtin::Object.instance_type,
-            module_entry.self_type&.yield_self {|ty|
-              absolute_type = checker.factory.env.absolute_type(ty, namespace: module_entry.name.absolute!.namespace)
-              checker.factory.type(absolute_type)
-            }
+            module_entry.self_type&.yield_self {|ty| checker.factory.type(ty) }
           ].compact
         )
 

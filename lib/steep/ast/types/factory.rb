@@ -334,7 +334,7 @@ module Steep
                   method.method_types.map do |type|
                     method_type(type, self_type: self_type) {|ty| ty.subst(subst) }
                   end,
-                  incompatible: method.attributes.include?(:incompatible)
+                  incompatible: name == :initialize || name == :new
                 )
               end
             end

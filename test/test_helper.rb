@@ -391,6 +391,7 @@ module FactoryHelper
 
       env = RBS::Environment.new()
       env_loader.load(env: env)
+      env = env.resolve_type_names
 
       definition_builder = RBS::DefinitionBuilder.new(env: env)
 

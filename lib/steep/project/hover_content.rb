@@ -80,7 +80,7 @@ module Steep
                                           when AST::Types::Name::Instance
                                             method_definition = method_definition_for(factory, receiver_type.name, instance_method: method_name)
                                             if method_definition&.defined_in
-                                              owner_name = factory.type_name(method_definition.defined_in.name.absolute!)
+                                              owner_name = factory.type_name(method_definition.defined_in)
                                               [
                                                 InstanceMethodName.new(owner_name, method_name),
                                                 method_definition
@@ -89,7 +89,7 @@ module Steep
                                           when AST::Types::Name::Class
                                             method_definition = method_definition_for(factory, receiver_type.name, singleton_method: method_name)
                                             if method_definition&.defined_in
-                                              owner_name = factory.type_name(method_definition.defined_in.name.absolute!)
+                                              owner_name = factory.type_name(method_definition.defined_in)
                                               [
                                                 SingletonMethodName.new(owner_name, method_name),
                                                 method_definition

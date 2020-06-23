@@ -565,7 +565,6 @@ module Steep
         end
 
         def absolute_type_name(type_name, namespace:)
-          puts namespace_1(namespace).ascend.to_a.join(" |> ")
           type_name_resolver.resolve(type_name, context: namespace_1(namespace).ascend)
         end
       end

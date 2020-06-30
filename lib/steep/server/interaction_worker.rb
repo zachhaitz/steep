@@ -160,7 +160,9 @@ HOVER
       def format_completion_item(item)
         range = LanguageServer::Protocol::Interface::Range.new(
           start: LanguageServer::Protocol::Interface::Position.new(
-            line: item.range.start.line-1,
+            line: item.range.start.line
+            
+            ,
             character: item.range.start.column
           ),
           end: LanguageServer::Protocol::Interface::Position.new(
@@ -192,7 +194,7 @@ HOVER
             ),
             documentation: item.definition.comment&.string,
             insert_text_format: LanguageServer::Protocol::Constant::InsertTextFormat::SNIPPET,
-            sort_text: item.inherited_method ? -1 : 0 # Ensure language server puts non-inherited methods before inherited methods
+            sort_text: item.inherited_method ? 'z' : 'a' # Ensure language server puts non-inherited methods before inherited methods
           )
         when Project::CompletionProvider::InstanceVariableItem
           label = "#{item.identifier}: #{item.type}"

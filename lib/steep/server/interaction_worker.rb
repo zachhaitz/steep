@@ -160,9 +160,7 @@ HOVER
       def format_completion_item(item)
         range = LanguageServer::Protocol::Interface::Range.new(
           start: LanguageServer::Protocol::Interface::Position.new(
-            line: item.range.start.line
-            
-            ,
+            line: item.range.start.line-1,
             character: item.range.start.column
           ),
           end: LanguageServer::Protocol::Interface::Position.new(

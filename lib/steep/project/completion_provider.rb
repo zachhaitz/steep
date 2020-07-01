@@ -296,7 +296,7 @@ module Steep
       end
 
       def inherited_method?(method, type)
-        method.implemented_in.name&.name != type.name.name
+        method.implemented_in.name&.name != type.name&.name
       end
     end
   end
